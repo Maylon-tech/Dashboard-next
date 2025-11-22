@@ -1,58 +1,62 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { BarChart2, DollarSign, Menu, Settings, ShoppingBag, ShoppingCart, TrendingUp, Users } from "lucide-react"
+import { BarChart2, DollarSign, Menu, Settings, ShoppingBag, ShoppingCart, TrendingUp, Users, LogOut } from "lucide-react"
 import { Link } from "react-router-dom"
-
 
 const SIDEBAR_ITEMS = [
     {
-        name:"Overview",
+        name:"Painel Controle",
         icon: BarChart2,
         color: "#6366f1",
         href: "/", 
     },
     {
-        name:"Products",
+        name:"Produtos",
         icon: ShoppingBag,
         color: "#8b5cf6",
         href: "/products", 
     },
     {
-        name:"Users",
+        name:"Clientes",
         icon: Users,
         color: "#ec4899",
         href: "/users", 
     },
     {
-        name:"Sales",
+        name:"vendas",
         icon: DollarSign,
         color: "#10b981",
         href: "/sales", 
     },
     {
-        name:"Orders",
+        name:"Serviços",
         icon: ShoppingCart,
         color: "#f59e0b",
         href: "/orders", 
     },
     {
-        name:"Analytics",
+        name:"Despesas",
         icon: TrendingUp,
         color: "#3b82f6",
         href: "/analytics", 
     },
     {
-        name:"Settings",
+        name:"Configurações",
         icon: Settings,
         color: "#6ee7b7",
         href: "/settings", 
+    },
+    {
+        name:"Sair",
+        icon: LogOut,
+        color: "#15409c",
+        href: "/sighIn", 
     }
 ]
 
 
 const Sidebar = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true)
-
 
   return (
     <motion.div
@@ -72,7 +76,7 @@ const Sidebar = () => {
             <nav className="mt-8 flex-grow">
                 {
                     SIDEBAR_ITEMS.map((item, index) => (
-                        <Link key={item.href} to={item.href}>
+                        <Link key={index} to={item.href}>
                             <motion.div 
                                 className="flex items-center p-4 text-sm font-medium rounded-lg hover:bg-gray-700 transition-colors mb-2"
                             >
